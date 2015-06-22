@@ -1,6 +1,5 @@
-pf (5.5.0-1) UNRELEASED; urgency=medium
+pf (5.5.0-1) unstable; urgency=medium
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your
-    ITP>
+  * New upstream release.
 
  -- Yadickson Soto <yadickson@gmail.com>  Mon, 22 Jun 2015 10:01:44 -0430
