@@ -1,0 +1,512 @@
+--- pf-5.5.0/src/org/pf/reflect/ReflectUtil.java	2012-08-12 09:00:16.000000000 -0430
++++ pf-5.5.0~/src/org/pf/reflect/ReflectUtil.java	2015-06-22 10:15:29.050081879 -0430
+@@ -95,7 +95,7 @@
+   public static ReflectUtil current()
+   {
+     return currentInstance ;
+-  } // current() 
++  } // current() 
+  
+   // =========================================================================
+   // CONSTRUCTORS
+@@ -106,9 +106,9 @@
+   protected ReflectUtil()
+   {
+     super() ;
+-  } // ReflectUtil() 
++  } // ReflectUtil() 
+   
+-  // -------------------------------------------------------------------------
++  // -------------------------------------------------------------------------
+  
+   /**
+    * Initialize the new instance with a different class loader.
+@@ -119,9 +119,9 @@
+   {
+   	super() ;
+   	this.loader = classLoader ;
+-  } // ReflectUtil() 
++  } // ReflectUtil() 
+   
+-  // -------------------------------------------------------------------------
++  // -------------------------------------------------------------------------
+   
+   // =========================================================================
+   // PUBLIC INSTANCE METHODS
+@@ -133,7 +133,7 @@
+ 	public boolean classExists( String className )
+ 	{
+ 		return ( this.findClass( className ) != null ) ;
+-	} // classExists() 
++	} // classExists() 
+  
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -227,7 +227,7 @@
+ 			return null;
+ 		}
+ 		return clazz ;
+-	} // findClass() 
++	} // findClass() 
+  
+ 	// -------------------------------------------------------------------------
+ 
+@@ -245,7 +245,7 @@
+ 	public Object createInstanceOf(String className, Object caller, Object...params) 
+ 	{
+ 		return this.createInstanceOfType(Object.class, className, caller, params);
+-	} // createInstanceOf() 
++	} // createInstanceOf() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -287,7 +287,7 @@
+ 			return null;
+ 		}
+ 		return this.newInstanceOf(aClass, params);
+-	} // createInstanceOf() 
++	} // createInstanceOf() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -304,7 +304,7 @@
+ 			return EMPTY_CLASS_ARRAY;
+ 		}
+ 		return this.getInterfacesOf( object.getClass() ) ;
+-	} // getInterfacesOf() 
++	} // getInterfacesOf() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -328,7 +328,7 @@
+ 			return EMPTY_CLASS_ARRAY;
+ 		}
+ 		return (Class[]) result.toArray( new Class[result.size()] ) ;
+-	} // getInterfacesOf() 
++	} // getInterfacesOf() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -386,7 +386,7 @@
+ 			method = this.findMethod(superclass, methodName, lookupParamTypes, modifiers);
+ 		}
+ 		return method;
+-	} // findMethod() 
++	} // findMethod() 
+  
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -403,7 +403,7 @@
+ 	public Method findMethod( Class aClass, String methodName, Class[] paramTypes)
+ 	{
+ 		return this.findMethod( aClass, methodName, paramTypes, 0 ) ;
+-	} // findMethod() 
++	} // findMethod() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -472,7 +472,7 @@
+ 		this.addInheritedMethods( methods, aClass.getSuperclass() ) ;
+ 		this.addMethodsToList( methods, aClass.getDeclaredMethods() ) ;
+ 		return methods ;
+-	} // getMethodsOf() 
++	} // getMethodsOf() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -488,7 +488,7 @@
+ 	public List getConstructorsOf( Object object )
+ 	{
+ 		return this.getConstructorsOf( object.getClass() ) ;
+-	} // getConstructorsOf() 
++	} // getConstructorsOf() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -512,7 +512,7 @@
+ 			constructors.add( constructorArray[i] ) ;
+ 		}
+ 		return constructors ;
+-	} // getConstructorsOf() 
++	} // getConstructorsOf() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -530,7 +530,7 @@
+ 		
+ 		aClass = obj.getClass() ;
+ 		return this.getFieldsOf( aClass ) ;
+-	} // getFieldsOf() 
++	} // getFieldsOf() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -549,7 +549,7 @@
+ 		this.addInheritedFields( fields, aClass.getSuperclass() ) ;
+ 		this.addFieldsToList( fields, aClass.getDeclaredFields() ) ;
+ 		return fields ;
+-	} // getFieldsOf() 
++	} // getFieldsOf() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -589,7 +589,7 @@
+ 			}
+ 		}
+ 		return null ;
+-	} // findField() 
++	} // findField() 
+  
+ 	// -------------------------------------------------------------------------	
+ 
+@@ -604,7 +604,7 @@
+ 	public Field findField( Class aClass, String name )
+ 	{
+ 		return this.findField( aClass, name, 0 ) ;
+-	} // findField() 
++	} // findField() 
+ 	
+ 	// -------------------------------------------------------------------------	
+ 	
+@@ -680,7 +680,7 @@
+ 		}
+ 		
+ 		return value ;
+-	} // getValueOf() 
++	} // getValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -698,7 +698,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, value, false) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -716,7 +716,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Character(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -734,7 +734,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Integer(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -752,7 +752,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Byte(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -770,7 +770,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, value ? Boolean.TRUE : Boolean.FALSE , true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -788,7 +788,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Long(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -806,7 +806,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Short(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -824,7 +824,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Double(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -842,7 +842,7 @@
+ 		throws NoSuchFieldException
+ 	{
+ 		this.setValueOf( obj, name, new Float(value), true) ;
+-	} // setValueOf() 
++	} // setValueOf() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -866,7 +866,7 @@
+ 		}
+ 		method = this.findMethod( aClass, methodName, paramTypes, Modifier.PUBLIC ) ;
+ 		return ( method != null ) ;
+-	} // hasPublicMethod() 
++	} // hasPublicMethod() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -887,7 +887,7 @@
+ 			return false ;
+ 		}
+ 		return this.hasPublicMethod( obj.getClass(), methodName, paramTypes ) ;
+-	} // hasPublicMethod() 
++	} // hasPublicMethod() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -901,7 +901,7 @@
+ 			return false ;
+ 		}
+ 		return this.isDefaultVisibility( field.getModifiers() ) ;
+-	} // isPackageVisible() 
++	} // isPackageVisible() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -915,7 +915,7 @@
+ 			return false ;
+ 		}
+ 		return this.isDefaultVisibility( method.getModifiers() ) ;
+-	} // isPackageVisible() 
++	} // isPackageVisible() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -929,7 +929,7 @@
+ 																		Modifier.PROTECTED | Modifier.PRIVATE ;
+ 		
+ 		return ( ( modifiers & explicitVisibility ) == 0 ) ;
+-	} // isDefaultVisibility() 
++	} // isDefaultVisibility() 
+  
+   // -------------------------------------------------------------------------
+ 
+@@ -953,7 +953,7 @@
+ 			return "private" ;
+ 		} 	 
+ 		return "" ;
+-	} // getVisibility() 
++	} // getVisibility() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1031,7 +1031,7 @@
+ 	public <T> T newInstance(Class<T> aClass, Object[] params)
+ 	{
+ 		return this.newInstanceOf(aClass, params) ;
+-	} // newInstance() 
++	} // newInstance() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1081,7 +1081,7 @@
+ 			}
+ 		}
+ 		return null ;
+-	} // newInstanceOf() 
++	} // newInstanceOf() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1140,7 +1140,7 @@
+ 	public Object newInstance( String className, Object param1, Object param2 )
+ 	{
+ 		return this.newInstance( className, new Object[] { param1, param2 } ) ;
+-	} // newInstance() 
++	} // newInstance() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1170,7 +1170,7 @@
+ 			throw new ReflectionException(e) ;
+ 		}
+ 		return this.newInstance( clazz, params ) ;
+-	} // newInstance() 
++	} // newInstance() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1194,7 +1194,7 @@
+ 			paramTypes = new Class[0];
+ 		}
+ 
+-		constructors = aClass.getDeclaredConstructors();
++		constructors = ( Constructor<T>[] ) aClass.getDeclaredConstructors();
+ 		for (int i = 0; i < constructors.length; i++ )
+ 		{
+ 			types = constructors[i].getParameterTypes();
+@@ -1204,7 +1204,7 @@
+ 			}
+ 		} 
+ 		return null ;
+-	} // findConstructor() 
++	} // findConstructor() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1229,7 +1229,7 @@
+ 			types[i] = this.getTypeOf( params[i] ) ;
+ 		}
+ 		return types ;
+-	} // getTypesFromParameters() 
++	} // getTypesFromParameters() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1264,7 +1264,7 @@
+ 			return Byte.TYPE;
+ 
+ 		return object.getClass();
+-	} // getTypeOf() 
++	} // getTypeOf() 
+ 
+ 	// -------------------------------------------------------------------------
+ 
+@@ -1302,7 +1302,7 @@
+ 	public boolean contains( Class[] classes, Class aClass ) 
+ 	{
+ 		return this.indexOf( classes, aClass ) >= 0 ;
+-	} // contains() 
++	} // contains() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1324,7 +1324,7 @@
+ 			}
+ 		}
+ 		return NOT_FOUND;
+-	} // indexOf() 
++	} // indexOf() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1339,7 +1339,7 @@
+ 			return false ;
+ 		}
+ 		return this.implementsInterface( object.getClass(), anInterface ) ;
+-	} // implementsInterface() 
++	} // implementsInterface() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1360,7 +1360,7 @@
+ 		}
+ 		interfaces = this.getInterfacesOf( aClass ) ;
+ 		return this.contains( interfaces, anInterface ) ;
+-	} // implementsInterface() 
++	} // implementsInterface() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 
+@@ -1402,7 +1402,7 @@
+ 			i++;
+ 		}
+   	return objects;
+-	} // toArray() 
++	} // toArray() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 
+@@ -1453,7 +1453,7 @@
+ 		{
+ 			methodList.add( methods[i] ) ;
+ 		}
+-	} // addMethodsToList() 
++	} // addMethodsToList() 
+  
+ 	// --------------------------------------------------------------------------
+ 
+@@ -1465,7 +1465,7 @@
+ 			this.addInheritedMethods( methods, aClass.getSuperclass() ) ;
+ 			this.addMethodsToList( methods, aClass.getDeclaredMethods() ) ;
+ 		}
+-	} // addInheritedMethods() 
++	} // addInheritedMethods() 
+  
+ 	// --------------------------------------------------------------------------
+  
+@@ -1475,7 +1475,7 @@
+ 		{
+ 			fieldList.add( fields[i] ) ;
+ 		}
+-	} // addFieldsToList() 
++	} // addFieldsToList() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -1487,7 +1487,7 @@
+ 			this.addInheritedFields( fields, aClass.getSuperclass() ) ;
+ 			this.addFieldsToList( fields, aClass.getDeclaredFields() ) ;
+ 		}
+-	} // addInheritedFields() 
++	} // addInheritedFields() 
+ 	
+ 	// --------------------------------------------------------------------------
+ 	
+@@ -1587,7 +1587,7 @@
+ 			}
+ 		}
+ 		return true ;
+-	} // compatibleTypes() 
++	} // compatibleTypes() 
+ 
+ 	// -------------------------------------------------------------------------
+ 
+@@ -1612,21 +1612,21 @@
+ 		{
+ 			this.collectInterfaces( result, interfaces[i] ) ;
+ 		}
+-	} // collectInterfaces() 
++	} // collectInterfaces() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 
+ 	protected boolean isNullOrEmpty( Object[] objects ) 
+ 	{
+ 		return ( objects == null ) || ( objects.length == 0 ) ;
+-	} // isNullOrEmpty() 
++	} // isNullOrEmpty() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+ 	protected boolean isNullOrEmpty( Collection collection ) 
+ 	{
+ 		return ( collection == null ) || ( collection.isEmpty() ) ;
+-	} // isNullOrEmpty() 
++	} // isNullOrEmpty() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+@@ -1641,8 +1641,8 @@
+ 			return loader ;
+ 		}
+ 		return this.getClass().getClassLoader() ;
+-	} // getLoader() 
++	} // getLoader() 
+ 	
+ 	// -------------------------------------------------------------------------
+ 	
+-} // class ReflectUtil 
++} // class ReflectUtil 
