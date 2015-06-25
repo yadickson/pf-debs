@@ -1,5 +1,5 @@
 --- pf-5.5.0/src/org/pf/db/util/DataSourceProxy.java	2008-02-22 17:43:38.000000000 -0430
-+++ pf-5.5.0~/src/org/pf/db/util/DataSourceProxy.java	2015-06-22 10:15:29.046081879 -0430
++++ pf-5.5.0~/src/org/pf/db/util/DataSourceProxy.java	2015-06-24 21:11:36.652613083 -0430
 @@ -17,6 +17,7 @@
  import java.sql.* ;
  import java.io.PrintWriter;
@@ -8,201 +8,20 @@
  
  /**
   * This class is a datasource wrapper for other datasources or simple
-@@ -65,7 +66,7 @@
-   {
-     super() ;
-     this.setDbConnection( conn ) ;
--  } // DataSourceProxy() 
-+  } // DataSourceProxy() 
+@@ -316,4 +317,16 @@
  
    // -------------------------------------------------------------------------
  
-@@ -78,7 +79,7 @@
-     this.setDbUrl( url ) ;
-     this.setDbUserid( username ) ;
-     this.setDbPassword( password ) ;
--  } // DataSourceProxy() 
-+  } // DataSourceProxy() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -88,7 +89,7 @@
-   public DataSourceProxy( String url )
-   {
-     this( url, null, null ) ;
--  } // DataSourceProxy() 
-+  } // DataSourceProxy() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -98,14 +99,14 @@
-     this.setDataSource( dataSource ) ;
-     this.setDbUserid( username ) ;
-     this.setDbPassword( password ) ;
--  } // DataSourceProxy() 
-+  } // DataSourceProxy() 
- 
-   // -------------------------------------------------------------------------
- 
-   public DataSourceProxy( DataSource dataSource )
-   {
-     this( dataSource, null, null ) ;
--  } // DataSourceProxy() 
-+  } // DataSourceProxy() 
- 
-   // =========================================================================
-   // PUBLIC INSTANCE METHODS
-@@ -134,7 +135,7 @@
- 		{
- 			return DriverManager.getConnection( this.getDbUrl(), this.getDbUserid(), this.getDbPassword() ) ;
- 		}
--  } // getConnection() 
-+  } // getConnection() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -149,49 +150,49 @@
- 			return this.getDataSource().getConnection( username, password ) ;
- 		}
-     return DriverManager.getConnection( this.getDbUrl(), username, password ) ;
--  } // getConnection() 
-+  } // getConnection() 
- 
-   // -------------------------------------------------------------------------
- 
-   public String getDbUrl()
- 	{
- 		return dbUrl;
--	} // getDbUrl() 
-+	} // getDbUrl() 
-   
-   // -------------------------------------------------------------------------
-   
- 	public void setDbUrl( String url )
- 	{
- 		dbUrl = url;
--	} // setDbUrl() 
-+	} // setDbUrl() 
- 	
- 	// -------------------------------------------------------------------------
- 	
- 	public String getDbUserid()
- 	{
- 		return dbUserid;
--	} // getDbUserid() 
-+	} // getDbUserid() 
- 	
- 	// -------------------------------------------------------------------------
- 	
- 	public void setDbUserid( String userId )
- 	{
- 		dbUserid = userId;
--	} // setDbUserid() 
-+	} // setDbUserid() 
- 	
- 	// -------------------------------------------------------------------------
- 	
- 	public String getDbPassword()
- 	{
- 		return dbPassword;
--	} // getDbPassword() 
-+	} // getDbPassword() 
- 	
- 	// -------------------------------------------------------------------------
- 	
- 	public void setDbPassword( String password )
- 	{
- 		dbPassword = password;
--	} // setDbPassword() 
-+	} // setDbPassword() 
- 
-   // -------------------------------------------------------------------------
-   
-@@ -208,7 +209,7 @@
- 			return this.getDataSource().getLoginTimeout() ;
- 		}
-     return DriverManager.getLoginTimeout() ;
--  } // getLoginTimeout() 
-+  } // getLoginTimeout() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -223,7 +224,7 @@
- 			return this.getDataSource().getLogWriter() ;
- 		}
-     return DriverManager.getLogWriter() ;
--  } // getLogWriter() 
-+  } // getLogWriter() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -243,7 +244,7 @@
- 		{
- 			DriverManager.setLoginTimeout( timeout ) ;
- 		}
--  } // setLoginTimeout() 
-+  } // setLoginTimeout() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -261,7 +262,7 @@
- 		{
- 			DriverManager.setLogWriter( writer ) ;
- 		}
--  } // setLogWriter() 
-+  } // setLogWriter() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -279,7 +280,7 @@
- 		{
- 			DriverManager.println( e.toString() ) ;
- 		}
--  } // setDriverClassName() 
-+  } // setDriverClassName() 
-   
-   // -------------------------------------------------------------------------
-   
-@@ -290,14 +291,14 @@
-   protected boolean hasDataSource()
-   {
-     return this.getDataSource() != null ;
--  } // hasDataSource() 
-+  } // hasDataSource() 
- 
-   // -------------------------------------------------------------------------
- 
-   protected boolean hasConnection()
-   {
-     return this.getDbConnection() != null ;
--  } // hasConnection() 
-+  } // hasConnection() 
- 
-   // -------------------------------------------------------------------------
- 
-@@ -312,8 +313,23 @@
- 			return this.getDataSource().getConnection() ;
- 		}
-     return this.getDataSource().getConnection( this.getDbUserid(), this.getDbPassword() ) ;
--  } // getDataSourceConnection() 
-+  } // getDataSourceConnection() 
- 
-   // -------------------------------------------------------------------------
- 
--} // class DataSourceProxy 
-+  @Override
 +  public <T> T unwrap(Class<T> iface) throws SQLException {
 +    throw new SQLException("unwrap");
 +  }
-+
-+  @Override
++ 
 +  public boolean isWrapperFor(Class<?> iface) throws SQLException {
 +    throw new SQLException("isWrapperFor");
 +  }
 +
-+  @Override
 +  public Logger getParentLogger() {
 +    return null;
 +  }
 +
-+} // class DataSourceProxy 
+ } // class DataSourceProxy 

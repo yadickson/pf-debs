@@ -3,15 +3,23 @@ Upstream-Name: Programmer's Friend
 Source: http://www.programmers-friend.org/
 
 Files: *
-Copyright: 2015, 
-License: GPL-3
+Copyright: 2015, by Manfred Duchrow.
+License: EPL
 
 Files: debian/*
 Copyright: 2015, Yadickson Soto <yadickson@gmail.com>
 License: GPL-3
 
+License: EPL
+ Copyright (c) 2015 Manfred Duchrow.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors:
+    Manfred Duchrow - initial API and implementation and/or initial documentation
+
 License: GPL-3
  On Debian systems, the full text of the GPL-3 license
  can be found in the file '/usr/share/common-licenses/GPL-3'
-
-
