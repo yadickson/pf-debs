@@ -9,9 +9,10 @@ addons:
 services:
 - docker
 env:
-- PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
-- PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
-- DEB_BUILD_OPTIONS=-nc
+  global:
+  - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
+  - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
+  - DEB_BUILD_OPTIONS=-nc
 before_script:
 - rm README.md
 - sh debian/get-orig-source.sh
