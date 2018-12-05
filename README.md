@@ -18,13 +18,14 @@ debian/rules publish-source
 **Build project**
 
 ```
-dpkg-buildpackage
+dpkg-buildpackage --no-sign
 ```
 
 **Tested**
 
 - Debian wheezy
 - Debian jessie
+- Debian buster
 
 [Release page](https://github.com/yadickson/pf-debs/releases)
 
