@@ -3,17 +3,19 @@ language: generic
 addons:
   apt:
     packages:
+    - dpkg-dev
     - unzip
     - wget
-    - cdbs
-    - debhelper
-    - maven-debian-helper
 services:
 - docker
+env:
+- PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
+- PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | perl -ne 'print $1 if m{(?:\d+:)?(\d.*)(?:\-\d+.*)};')
+- DEB_BUILD_OPTIONS=-nc
 before_script:
 - rm README.md
-- debian/rules get-orig-source
-- debian/rules publish-source
+- sh debian/get-orig-source.sh "${PACKAGE_NAME}" "${PACKAGE_VERSION}"
+- sh debian/publish-source.sh "${PACKAGE_NAME}" "${PACKAGE_VERSION}"
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 if: tag IS blank
