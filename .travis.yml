@@ -1,0 +1,33 @@
+sudo: required
+
+language: generic
+
+addons:
+  apt:
+    packages:
+    - unzip
+    - wget
+
+services:
+- docker
+
+before_script:
+- rm README.md
+- debian/rules get-orig-source
+- debian/rules publish-source
+
+script:
+- wget -O- http://travis.debian.net/script.sh | sh -
+
+if: tag IS blank
+
+deploy:
+  provider: bintray
+  file: ../*.deb
+  user: yadickson
+  key:
+    secure: MyTW7Fn1+xh0e5VSpwQKiLLaQkV8iFMWI0dp/9vHxHfCyRTH7YDTU95Cg4z+aa25boWI/md/fwrG18XFxwl3OedRCE9FGyzBLV04+uUHK7YXANRMXGVf0Bc6DXbQknBZpYchhotuQqphkIvKVGDG/gjpBURRkxf+EymyMu0g0B1lnkVkUpBnUQgDAEqSnGLNsnKZl72XibsnJYoA8yc5WjHIHXVUNCeDEsZHHSYpdUQYzHU/vFeFvd11IZmd9RlZSeGGGSfJpiAV7m8+SO+ppnxeQC7ZUMlhbe3IKXgcNPH/Brtp0oZy+v3cT+HO3YZPsvc9AsqmHxSvO3SqY8cTvOgMnjyb/SvdgE4Lt84cRNSD7rtvUrymbUUO/KxXiQSS79fP3AICTR97Blt/1vMfDPiOUUU+SDaeHkTRz8WS4KXVtXYzwON0KtLaqDZqiTTifKUUFQaW9S/+teUAcsaWFAb9o8mVfCpPMO82sAyCG8O5pvh+gpMuA69IPMADPxfIyRVFuVFAREPyAzMpUiSGujrMalxkoO3VghBVSZ3r0zJ2w1KxyLf2D2zr/yE1kQJj/DmMetbM4lE8tLXwyHyZ7uAnNjQnf5TthhJE9XrmZRctBnowJtWagK9ZA6FkQ9vOY5pXQCb2rcnf7lDXGkFrQvy2AL8MLwceKWKdRB6L9Ms=
+  passphrase: Optional
+  skip_cleanup: true
+  on:
+    tags: true

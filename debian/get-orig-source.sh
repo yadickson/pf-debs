@@ -12,7 +12,7 @@ ORIG_TARBALL="../${PKG}_${VERSION}.orig.tar.xz"
 rm -rf "${PKG}"*
 rm -f "${ZIPFILE}"
 
-wget -c -t 1 -T 5 "http://www.programmers-friend.org/download/pf-${VERSION}/${ZIPFILE}" || exit 1
+wget -c "http://www.programmers-friend.org/download/pf-${VERSION}/${ZIPFILE}" || exit 1
 
 unzip "${ZIPFILE}" -d tmp || exit 1
 

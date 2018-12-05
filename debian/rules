@@ -11,3 +11,6 @@ VER ?= $(shell dpkg-parsechangelog -ldebian/changelog | perl -ne 'print $$1 if m
 get-orig-source:
 	sh debian/get-orig-source.sh "$(PKG)" "$(VER)"
 
+publish-source:
+	sh debian/publish-source.sh "$(PKG)" "$(VER)"
+
