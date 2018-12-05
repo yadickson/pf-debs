@@ -11,14 +11,18 @@ Build Debian Package for Programmer's Friend
 **Download source code**
 
 ```
-debian/rules get-orig-source
-debian/rules publish-source
+$ debian/rules get-orig-source
+$ debian/rules publish-source
 ```
 
 **Build project**
 
 ```
-dpkg-buildpackage --no-sign
+$ dpkg-buildpackage --no-sign
+```
+or
+```
+$ fakeroot debian/rules clean binary
 ```
 
 **Tested**
