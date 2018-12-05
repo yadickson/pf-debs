@@ -14,8 +14,8 @@ env:
 - DEB_BUILD_OPTIONS=-nc
 before_script:
 - rm README.md
-- sh debian/get-orig-source.sh "${PACKAGE_NAME}" "${PACKAGE_VERSION}"
-- sh debian/publish-source.sh "${PACKAGE_NAME}" "${PACKAGE_VERSION}"
+- sh debian/get-orig-source.sh
+- sh debian/publish-source.sh
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 if: tag IS blank

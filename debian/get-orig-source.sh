@@ -2,8 +2,8 @@
 
 set -ex
 
-PKG="${1}"
-VERSION="${2}"
+PKG="${PACKAGE_NAME:-${1}}"
+VERSION="${PACKAGE_VERSION:-${2}}"
 ZIPFILE="${PKG}-${VERSION}.zip"
 ORIG_TARBALL="../${PKG}_${VERSION}.orig.tar.xz"
 
