@@ -1,31 +1,25 @@
 sudo: required
-
 language: generic
-
 addons:
   apt:
     packages:
     - unzip
     - wget
     - cdbs
-
 services:
 - docker
-
 before_script:
 - rm README.md
 - debian/rules get-orig-source
 - debian/rules publish-source
-
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
-
 if: tag IS blank
-
 deploy:
   provider: bintray
-  file: ../*.deb
-  user: yadickson
+  file: "../*.deb"
+  user:
+    secure: JrefgJqWhJAuSkRDChiI3COA4SOKdlxuWPEcnfnXtkZyrUTJ4GfVOoB8h8ge/J199tTRCQicgzqG4otkg4X9SMyeYs8aFIdWOLM+rbLo3tGut5xqsrDnsatDqEa+Hi8qSk9dS7H1IENY4MrLDKKepFJHguYhZWAbawPOCO9rQ8ZRVtwUwdoMvkYjO96fF1VXNNKNP6KLfTToNR7LlSMI2y2p/oVLpVeAr1egw3lEB1W1rac8/t67LtGbrS5djBEhdZPB1bPRpzoHAKXTc92WpFctIes79U1yqVlkUS/LB6EDBB9w2UH8nwnGP+7WbKYOyrMSrPdqCh9AxVGc/qtX74Y4L7nK4n1wCaMyNbjsK9MLEm9lBN59PrbSs8kn5LWV7fD+OTVlg8WA4zEhA+UYKJh87hKOPWBsUIvF6fUr3tkT8cZ8YO4jeHLGKuYakBkQWmjMKCznZWiMwmEqLHJatg0g1c3+pQn+02Hy/dsc7O6HWzysqky1FY2G9RK33g3J+2PHGq5/KxP5fehMbS+hQQP7RjuooH/1j+gtu/5yQg4/Mq7U11f9CHcVlQwrlkSPJ7tAwZPfZ6D086n/HIb6fBvEEmWt1vuI36im9ef//a4sEwwBt02Gu+6AkaNWKfwkaOrVStixEG8Vr1K1/WQsIN39DzhxFEdQWYCceVtNZy8=
   key:
     secure: MyTW7Fn1+xh0e5VSpwQKiLLaQkV8iFMWI0dp/9vHxHfCyRTH7YDTU95Cg4z+aa25boWI/md/fwrG18XFxwl3OedRCE9FGyzBLV04+uUHK7YXANRMXGVf0Bc6DXbQknBZpYchhotuQqphkIvKVGDG/gjpBURRkxf+EymyMu0g0B1lnkVkUpBnUQgDAEqSnGLNsnKZl72XibsnJYoA8yc5WjHIHXVUNCeDEsZHHSYpdUQYzHU/vFeFvd11IZmd9RlZSeGGGSfJpiAV7m8+SO+ppnxeQC7ZUMlhbe3IKXgcNPH/Brtp0oZy+v3cT+HO3YZPsvc9AsqmHxSvO3SqY8cTvOgMnjyb/SvdgE4Lt84cRNSD7rtvUrymbUUO/KxXiQSS79fP3AICTR97Blt/1vMfDPiOUUU+SDaeHkTRz8WS4KXVtXYzwON0KtLaqDZqiTTifKUUFQaW9S/+teUAcsaWFAb9o8mVfCpPMO82sAyCG8O5pvh+gpMuA69IPMADPxfIyRVFuVFAREPyAzMpUiSGujrMalxkoO3VghBVSZ3r0zJ2w1KxyLf2D2zr/yE1kQJj/DmMetbM4lE8tLXwyHyZ7uAnNjQnf5TthhJE9XrmZRctBnowJtWagK9ZA6FkQ9vOY5pXQCb2rcnf7lDXGkFrQvy2AL8MLwceKWKdRB6L9Ms=
   passphrase: Optional
