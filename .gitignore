@@ -11,3 +11,4 @@ src/
 target/
 .pc/
 pom.xml
+build/
