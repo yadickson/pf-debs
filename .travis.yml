@@ -10,7 +10,7 @@ services:
 - docker
 env:
 - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
-- PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | perl -ne 'print $$1 if m{(?:\d+:)?(\d.*)(?:\-\d+.*)};')
+- PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
 - DEB_BUILD_OPTIONS=-nc
 before_script:
 - rm README.md
