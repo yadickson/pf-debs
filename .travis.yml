@@ -13,7 +13,7 @@ env:
   global:
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
-  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS=--git-ignore-new --git-no-pristine-tar --git-no-pristine-tar-commit
+  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS=--git-ignore-new
 before_script:
 - rm -f README.md
 - sh debian/get-orig-source.sh
