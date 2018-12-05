@@ -10,3 +10,4 @@ debian/stamp-poms-patched
 src/
 target/
 .pc/
+pom.xml
