@@ -6,6 +6,8 @@ addons:
     - unzip
     - wget
     - cdbs
+    - debhelper
+    - maven-debian-helper
 services:
 - docker
 before_script:
