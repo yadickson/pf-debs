@@ -4,6 +4,7 @@ addons:
   apt:
     packages:
     - dpkg-dev
+    - quilt
     - unzip
     - wget
 services:
@@ -12,11 +13,11 @@ env:
   global:
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
-  - DEB_BUILD_OPTIONS=-nc
 before_script:
-- rm README.md
+- rm -f README.md
 - sh debian/get-orig-source.sh
 - sh debian/publish-source.sh
+- quilt push -a
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 if: tag IS blank
