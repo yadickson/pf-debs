@@ -7,6 +7,7 @@ debian/maven-repo/
 debian/stamp-maven-check
 debian/stamp-poms-patched
 *.xml.save
+.travis.bintray.json
 target/
 .pc/
 build/

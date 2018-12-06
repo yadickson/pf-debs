@@ -18,7 +18,7 @@ $ debian/rules publish-source
 **Build project**
 
 ```
-$ dpkg-buildpackage -rfakeroot --no-sign
+$ dpkg-buildpackage -rfakeroot -D -us -uc -i -I -sa
 ```
 or
 ```
