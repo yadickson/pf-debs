@@ -13,6 +13,6 @@ Depends: ${misc:Depends}, ${maven:Depends}
 Suggests: ${maven:OptionalDepends}
 Description: Programmer's Friend
  This is a large collection of Java utility classes that are supposed to
- to simplify many things that are quite cumbersome if you have to use just
+ simplify many things that are quite cumbersome if you have to use just
  the JDK.
 
