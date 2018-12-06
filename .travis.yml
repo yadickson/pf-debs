@@ -7,6 +7,7 @@ addons:
     - fakeroot
     - unzip
     - wget
+    - git
 services:
 - docker
 env:
@@ -20,6 +21,8 @@ env:
 before_script:
 - sh debian/get-orig-source.sh
 - sh debian/publish-source.sh
+- git add pom.xml src -f
+- git commit -m "Add source files"
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 before_deploy:

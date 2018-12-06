@@ -22,6 +22,7 @@ rm -rf tmp
 
 unzip "${ZIPFILE}" -d "${PKG}-${VERSION}" || exit 1
 
+find "${PKG}-${VERSION}" -type f -name 'package.html' -exec rm -f '{}' \;
 rm -rf "${PKG}-${VERSION}"/META-INF
 rm -f "${PKG}-${VERSION}"/*.version
 
