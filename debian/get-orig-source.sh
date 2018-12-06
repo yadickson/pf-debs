@@ -37,9 +37,10 @@ cp debian/libpf-java.pom.xml "${PKG}-${VERSION}/pom.xml"
 
 if [ "${ADD_PATCH}" != "false" ]
 then
-   patch -d "${PKG}-${VERSION}" -p1 < debian/patches/01_DataSourceProxy_java_patch.patch
-   patch -d "${PKG}-${VERSION}" -p1 < debian/patches/02_ReflectUtil_java_patch.patch
-   patch -d "${PKG}-${VERSION}" -p1 < debian/patches/03_GenericNamedObject_java_patch.patch
+   while read -r line
+   do
+      patch -d "${PKG}-${VERSION}" -p1 < "debian/patches/${line}"
+   done < debian/patches/series
 fi
 
 tar -czf "${ORIG_TARBALL}" --exclude-vcs "${PKG}-${VERSION}" || exit 1
