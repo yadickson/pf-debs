@@ -4,6 +4,7 @@ addons:
   apt:
     packages:
     - dpkg-dev
+    - fakeroot
     - quilt
     - unzip
     - wget

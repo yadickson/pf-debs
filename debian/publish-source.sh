@@ -8,7 +8,7 @@ ORIG_TARBALL="../${PKG}_${VERSION}.orig.tar.gz"
 
 [ -f "${ORIG_TARBALL}" ] || exit 1
 
-rm -rf .pc
+rm -rf .pc target build
 rm -rf pom.xml* src
 
 tar --strip-components=1 -xzf "${ORIG_TARBALL}" "${PKG}-${VERSION}" || exit 1

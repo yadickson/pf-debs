@@ -18,7 +18,7 @@ $ debian/rules publish-source
 **Build project**
 
 ```
-$ dpkg-buildpackage --no-sign -nc
+$ dpkg-buildpackage -rfakeroot --no-sign
 ```
 or
 ```
@@ -33,4 +33,5 @@ $ fakeroot debian/rules clean binary
 - Debian buster
 
 [Release page](https://github.com/yadickson/pf-debs/releases)
+[Debian Repository](https://bintray.com/yadickson/debian)
 
