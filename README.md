@@ -38,7 +38,7 @@ $ fakeroot debian/rules clean binary
 - Debian jessie
 - Debian buster
 
-[travis-image]: https://travis-ci.org/yadickson/pf-debs.svg
+[travis-image]: https://api.travis-ci.org/yadickson/pf-debs.svg?branch=wheezy
 [travis-url]: https://travis-ci.org/yadickson/pf-debs
 
 [Release page](https://github.com/yadickson/pf-debs/releases)

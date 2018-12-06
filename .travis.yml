@@ -28,6 +28,7 @@ before_script:
 - git add pom.xml src -f
 - git commit -m "Add source files"
 - quilt push -a
+- quilt pop -a
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 before_deploy:
