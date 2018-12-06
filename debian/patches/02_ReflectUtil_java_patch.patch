@@ -1,5 +1,7 @@
---- pf-debs.orig/src/org/pf/reflect/ReflectUtil.java
-+++ pf-debs/src/org/pf/reflect/ReflectUtil.java
+Index: pf-debs/src/org/pf/reflect/ReflectUtil.java
+===================================================================
+--- pf-debs.orig/src/org/pf/reflect/ReflectUtil.java	2018-12-06 11:32:58.100445867 -0300
++++ pf-debs/src/org/pf/reflect/ReflectUtil.java	2018-12-06 11:32:58.096445804 -0300
 @@ -1194,7 +1194,7 @@
  			paramTypes = new Class[0];
  		}

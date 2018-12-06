@@ -1,5 +1,7 @@
---- pf-debs.orig/src/org/pf/db/util/DataSourceProxy.java
-+++ pf-debs/src/org/pf/db/util/DataSourceProxy.java
+Index: pf-debs/src/org/pf/db/util/DataSourceProxy.java
+===================================================================
+--- pf-debs.orig/src/org/pf/db/util/DataSourceProxy.java	2018-12-06 11:32:49.696313404 -0300
++++ pf-debs/src/org/pf/db/util/DataSourceProxy.java	2018-12-06 11:32:49.692313341 -0300
 @@ -17,6 +17,7 @@
  import java.sql.* ;
  import java.io.PrintWriter;
