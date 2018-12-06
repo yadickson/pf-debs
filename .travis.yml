@@ -14,6 +14,7 @@ services:
 - docker
 env:
   global:
+  - QUILT_PATCHES=debian/patches
   - BINTRAY_REPO_NAME=debian
   - BINTRAY_USER=yadickson
   - PACKAGE_LICENSE=EPL

@@ -1,5 +1,6 @@
-# pf-debs
-Build Debian Package for Programmer's Friend
+# Debian Package for Programmer's Friend Project
+
+[![TravisCI Status][travis-image]][travis-url]
 
 **Build dependencies**
 
@@ -36,6 +37,9 @@ $ fakeroot debian/rules clean binary
 - Debian wheezy
 - Debian jessie
 - Debian buster
+
+[travis-image]: https://travis-ci.org/yadickson/pf-debs.svg
+[travis-url]: https://travis-ci.org/yadickson/pf-debs
 
 [Release page](https://github.com/yadickson/pf-debs/releases)
 [Debian Repository](https://bintray.com/yadickson/debian)
