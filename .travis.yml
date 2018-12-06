@@ -10,6 +10,7 @@ addons:
     - libc-bin
     - dos2unix
     - git
+    - quilt
 services:
 - docker
 env:
@@ -26,6 +27,7 @@ before_script:
 - sh debian/publish-source.sh
 - git add pom.xml src -f
 - git commit -m "Add source files"
+- quilt push -a
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 before_deploy:
