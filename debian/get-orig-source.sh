@@ -28,7 +28,7 @@ rm -f "${PKG}-${VERSION}"/*.version
 mkdir -p "${PKG}-${VERSION}"/src
 
 mv "${PKG}-${VERSION}"/org "${PKG}-${VERSION}"/src
-cp debian/pom.xml "${PKG}-${VERSION}"
+cp debian/libpf-java.pom.xml "${PKG}-${VERSION}/pom.xml"
 
 tar -czf "${ORIG_TARBALL}" --exclude-vcs "${PKG}-${VERSION}" || exit 1
 
