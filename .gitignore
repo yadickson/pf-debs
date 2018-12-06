@@ -7,8 +7,9 @@ debian/maven-repo/
 debian/stamp-maven-check
 debian/stamp-poms-patched
 *.xml.save
-src/
 target/
 .pc/
-pom.xml
 build/
+src/
+pom.xml
+
