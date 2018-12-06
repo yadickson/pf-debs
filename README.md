@@ -18,10 +18,11 @@ $ debian/rules publish-source
 **Build project**
 
 ```
-$ dpkg-buildpackage --no-sign
+$ dpkg-buildpackage --no-sign -nc
 ```
 or
 ```
+$ QUILT_PATCHES=debian/patches quilt push -a
 $ fakeroot debian/rules clean binary
 ```
 

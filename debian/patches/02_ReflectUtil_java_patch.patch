@@ -1,5 +1,5 @@
---- a/src/org/pf/reflect/ReflectUtil.java
-+++ b/src/org/pf/reflect/ReflectUtil.java
+--- pf-debs.orig/src/org/pf/reflect/ReflectUtil.java
++++ pf-debs/src/org/pf/reflect/ReflectUtil.java
 @@ -1194,7 +1194,7 @@
  			paramTypes = new Class[0];
  		}

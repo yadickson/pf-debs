@@ -1,5 +1,5 @@
---- a/src/org/pf/settings/impl/GenericNamedObject.java
-+++ b/src/org/pf/settings/impl/GenericNamedObject.java
+--- pf-debs.orig/src/org/pf/settings/impl/GenericNamedObject.java
++++ pf-debs/src/org/pf/settings/impl/GenericNamedObject.java
 @@ -14,7 +14,7 @@
  // ===========================================================================
  

@@ -5,7 +5,7 @@ set -ex
 PKG="${PACKAGE_NAME:-${1}}"
 VERSION="${PACKAGE_VERSION:-${2}}"
 ZIPFILE="${PKG}-${VERSION}.zip"
-ORIG_TARBALL="../${PKG}_${VERSION}.orig.tar.xz"
+ORIG_TARBALL="../${PKG}_${VERSION}.orig.tar.gz"
 
 [ ! -f "${ORIG_TARBALL}" ] || exit 0
 
@@ -29,7 +29,7 @@ mkdir -p "${PKG}-${VERSION}"/src
 
 mv "${PKG}-${VERSION}"/org "${PKG}-${VERSION}"/src
 
-tar -cJf "${ORIG_TARBALL}" --exclude-vcs "${PKG}-${VERSION}" || exit 1
+tar -czf "${ORIG_TARBALL}" --exclude-vcs "${PKG}-${VERSION}" || exit 1
 
 rm -rf "${PKG}-${VERSION}"
 rm -f "${ZIPFILE}"
