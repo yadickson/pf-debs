@@ -13,7 +13,7 @@ env:
   global:
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
-  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-no-pristine-tar --git-no-pristine-tar-commit --git-upstream-tree=debian/${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
+  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
 before_script:
 - sh debian/get-orig-source.sh
 - sh debian/publish-source.sh
