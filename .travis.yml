@@ -10,12 +10,11 @@ addons:
     - libc-bin
     - dos2unix
     - git
-    - quilt
+    - patch
 services:
 - docker
 env:
   global:
-  - QUILT_PATCHES=debian/patches
   - BINTRAY_REPO_NAME=debian
   - BINTRAY_USER=yadickson
   - PACKAGE_LICENSE=EPL
@@ -23,12 +22,11 @@ env:
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
   - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
 before_script:
-- sh debian/get-orig-source.sh
-- sh debian/publish-source.sh
-- git add pom.xml src -f
+- sh debian/get-orig-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION} true
+- sh debian/publish-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION}
+- sed -i 's/\(^.*$\)/#\1/g' debian/patches/series
+- git add pom.xml src debian/patches/series -f
 - git commit -m "Add source files"
-- quilt push -a
-- quilt pop -a
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 before_deploy:

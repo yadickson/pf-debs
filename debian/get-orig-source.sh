@@ -4,6 +4,7 @@ set -ex
 
 PKG="${PACKAGE_NAME:-${1}}"
 VERSION="${PACKAGE_VERSION:-${2}}"
+ADD_PATCH="${3:-false}"
 ZIPFILE="${PKG}-${VERSION}.zip"
 ORIG_TARBALL="../${PKG}_${VERSION}.orig.tar.gz"
 
@@ -33,6 +34,13 @@ mkdir -p "${PKG}-${VERSION}"/src
 
 mv "${PKG}-${VERSION}"/org "${PKG}-${VERSION}"/src
 cp debian/libpf-java.pom.xml "${PKG}-${VERSION}/pom.xml"
+
+if [ "${ADD_PATCH}" != "false" ]
+then
+   patch -d "${PKG}-${VERSION}" -p1 < debian/patches/01_DataSourceProxy_java_patch.patch
+   patch -d "${PKG}-${VERSION}" -p1 < debian/patches/02_ReflectUtil_java_patch.patch
+   patch -d "${PKG}-${VERSION}" -p1 < debian/patches/03_GenericNamedObject_java_patch.patch
+fi
 
 tar -czf "${ORIG_TARBALL}" --exclude-vcs "${PKG}-${VERSION}" || exit 1
 
