@@ -10,7 +10,6 @@ addons:
     - libc-bin
     - dos2unix
     - git
-    - patch
 services:
 - docker
 env:
@@ -22,10 +21,9 @@ env:
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
   - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
 before_script:
-- sh debian/get-orig-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION} true
+- sh debian/get-orig-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION}
 - sh debian/publish-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION}
-- sed -i 's/\(^.*$\)/#\1/g' debian/patches/series
-- git add pom.xml src debian/patches/series -f
+- git add pom.xml src -f
 - git commit -m "Add source files"
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
