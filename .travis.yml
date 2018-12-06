@@ -7,6 +7,8 @@ addons:
     - fakeroot
     - unzip
     - wget
+    - libc-bin
+    - dos2unix
     - git
 services:
 - docker

@@ -10,6 +10,11 @@ Build Debian Package for Programmer's Friend
 
 **Download source code**
 
+- unzip
+- wget
+- libc-bin
+- dos2unix 
+
 ```
 $ debian/rules get-orig-source
 $ debian/rules publish-source

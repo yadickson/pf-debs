@@ -23,6 +23,9 @@ rm -rf tmp
 unzip "${ZIPFILE}" -d "${PKG}-${VERSION}" || exit 1
 
 find "${PKG}-${VERSION}" -type f -name 'package.html' -exec rm -f '{}' \;
+
+find "${PKG}-${VERSION}" -type f -name '*.java' -exec iconv -f ISO-8859-1 -t UTF-8 '{}' -o '{}'.iconv \; -exec mv '{}'.iconv '{}' \; -exec dos2unix '{}' \;
+
 rm -rf "${PKG}-${VERSION}"/META-INF
 rm -f "${PKG}-${VERSION}"/*.version
 

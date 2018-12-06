@@ -1,12 +1,10 @@
-Index: pf-debs/src/org/pf/settings/impl/GenericNamedObject.java
-===================================================================
---- pf-debs.orig/src/org/pf/settings/impl/GenericNamedObject.java	2018-12-06 11:32:59.972475371 -0300
-+++ pf-debs/src/org/pf/settings/impl/GenericNamedObject.java	2018-12-06 11:32:59.972475371 -0300
+--- a/src/org/pf/settings/impl/GenericNamedObject.java
++++ b/src/org/pf/settings/impl/GenericNamedObject.java
 @@ -14,7 +14,7 @@
  // ===========================================================================
  
  /**
-- *´Generic implementation for named objects
+- *Â´Generic implementation for named objects
 + * Generic implementation for named objects
   *
   * @author Manfred Duchrow
