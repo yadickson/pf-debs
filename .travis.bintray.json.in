@@ -37,6 +37,6 @@
 
     "publish": true,
 
-    "override": true
+    "override": false
 }
 
