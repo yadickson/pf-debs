@@ -35,12 +35,20 @@ $ fakeroot debian/rules clean binary
 **Tested**
 
 - Debian wheezy
-- Debian jessie
-- Debian buster
+
+**Repositories**
+
+```
+$ echo "deb [trusted=true] https://dl.bintray.com/yadickson/debian [distribution] main" | sudo tee -a /etc/apt/sources.list.d/bintray.list
+$ sudo apt-get update
+$ sudo apt-get upgrade -y
+$ sudo apt-get install libpf-java
+```
+
+[Release page](https://github.com/yadickson/pf-debs/releases)
+
+[Debian Repository](https://bintray.com/yadickson/debian)
 
 [travis-image]: https://api.travis-ci.org/yadickson/pf-debs.svg?branch=wheezy
 [travis-url]: https://travis-ci.org/yadickson/pf-debs
-
-[Release page](https://github.com/yadickson/pf-debs/releases)
-[Debian Repository](https://bintray.com/yadickson/debian)
 
