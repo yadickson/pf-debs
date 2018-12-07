@@ -9,7 +9,6 @@ addons:
     - wget
     - libc-bin
     - dos2unix
-    - git
 services:
 - docker
 env:
@@ -19,14 +18,12 @@ env:
   - PACKAGE_LICENSE=EPL
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
-  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-no-create-orig --git-overlay --git-upstream-tree=${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
+  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-ignore-new --git-upstream-tree=${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
 before_script:
 - sh debian/get-orig-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION}
 - sh debian/publish-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION}
-- git add pom.xml src -f
-- git commit -m "Add source files"
 script:
-- wget -O- http://travis.debian.net/script.sh | sh -
+- wget -O- http://travis.debian.net/script.sh | sed 's/--git-export-dir=\${TRAVIS_DEBIAN_BUILD_DIR}//g' | sh -
 before_deploy:
   - sed -e "s/__NAME__/${PACKAGE_NAME}/g" .travis.bintray.json.in > .travis.bintray.json
   - sed -i "s/__REPO_NAME__/${BINTRAY_REPO_NAME}/g" .travis.bintray.json
