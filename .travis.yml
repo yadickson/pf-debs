@@ -22,6 +22,7 @@ before_deploy:
   - sed -i "s/__LICENSE__/${PACKAGE_LICENSE}/g" .travis.bintray.json
   - sed -i "s/__VERSION__/${PACKAGE_VERSION}/g" .travis.bintray.json
   - sed -i "s/__DISTRIBUTION__/${PACKAGE_DISTRIBUTION}/g" .travis.bintray.json
+  - cat .travis.bintray.json
 deploy:
   provider: bintray
   file: .travis.bintray.json

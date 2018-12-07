@@ -10,7 +10,7 @@
         "desc": "__NAME__ __VERSION__ by __SUBJECT__"
     },
 
-    "licenses": ["__LICENSE__", "GPL-3"],
+    "licenses": ["__LICENSE__", "GPL-3.0"],
 
     "desc": "Debian package built and deployed completely automatically",
 
