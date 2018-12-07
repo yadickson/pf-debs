@@ -1,0 +1,37 @@
+sudo: required
+language: generic
+services:
+- docker
+env:
+  global:
+  - BINTRAY_REPO_NAME=debian
+  - BINTRAY_USER=yadickson
+  - PACKAGE_LICENSE=EPL-1.0
+  - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
+  - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
+  - PACKAGE_DISTRIBUTION=$(dpkg-parsechangelog | awk '/^Distribution:/ { print $2 }')
+  - PACKAGE_RELEASE=$(date '+%Y-%m-%d')
+  - TRAVIS_DEBIAN_DERIVATIVE=debian
+  - TRAVIS_DEBIAN_DISTRIBUTION=${PACKAGE_DISTRIBUTION}
+  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${PACKAGE_DISTRIBUTION} --git-debian-branch=${PACKAGE_DISTRIBUTION}"
+script:
+- wget -O- http://travis.debian.net/script.sh | sh -
+before_deploy:
+  - sed -e "s/__NAME__/${PACKAGE_NAME}/g" .travis.bintray.json.in > .travis.bintray.json
+  - sed -i "s/__REPO_NAME__/${BINTRAY_REPO_NAME}/g" .travis.bintray.json
+  - sed -i "s/__SUBJECT__/${BINTRAY_USER}/g" .travis.bintray.json
+  - sed -i "s/__LICENSE__/${PACKAGE_LICENSE}/g" .travis.bintray.json
+  - sed -i "s/__VERSION__/${PACKAGE_VERSION}/g" .travis.bintray.json
+  - sed -i "s/__DISTRIBUTION__/${PACKAGE_DISTRIBUTION}/g" .travis.bintray.json
+  - sed -i "s/__RELEASE__/${PACKAGE_RELEASE}/g" .travis.bintray.json
+  - cat .travis.bintray.json
+deploy:
+  provider: bintray
+  file: .travis.bintray.json
+  user: ${BINTRAY_USER}
+  key:
+    secure: MyTW7Fn1+xh0e5VSpwQKiLLaQkV8iFMWI0dp/9vHxHfCyRTH7YDTU95Cg4z+aa25boWI/md/fwrG18XFxwl3OedRCE9FGyzBLV04+uUHK7YXANRMXGVf0Bc6DXbQknBZpYchhotuQqphkIvKVGDG/gjpBURRkxf+EymyMu0g0B1lnkVkUpBnUQgDAEqSnGLNsnKZl72XibsnJYoA8yc5WjHIHXVUNCeDEsZHHSYpdUQYzHU/vFeFvd11IZmd9RlZSeGGGSfJpiAV7m8+SO+ppnxeQC7ZUMlhbe3IKXgcNPH/Brtp0oZy+v3cT+HO3YZPsvc9AsqmHxSvO3SqY8cTvOgMnjyb/SvdgE4Lt84cRNSD7rtvUrymbUUO/KxXiQSS79fP3AICTR97Blt/1vMfDPiOUUU+SDaeHkTRz8WS4KXVtXYzwON0KtLaqDZqiTTifKUUFQaW9S/+teUAcsaWFAb9o8mVfCpPMO82sAyCG8O5pvh+gpMuA69IPMADPxfIyRVFuVFAREPyAzMpUiSGujrMalxkoO3VghBVSZ3r0zJ2w1KxyLf2D2zr/yE1kQJj/DmMetbM4lE8tLXwyHyZ7uAnNjQnf5TthhJE9XrmZRctBnowJtWagK9ZA6FkQ9vOY5pXQCb2rcnf7lDXGkFrQvy2AL8MLwceKWKdRB6L9Ms=
+  passphrase: Optional
+  skip_cleanup: true
+  on:
+    tags: true

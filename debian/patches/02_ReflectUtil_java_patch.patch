@@ -1,0 +1,11 @@
+--- a/src/org/pf/reflect/ReflectUtil.java
++++ b/src/org/pf/reflect/ReflectUtil.java
+@@ -1194,7 +1194,7 @@
+ 			paramTypes = new Class[0];
+ 		}
+ 
+-		constructors = aClass.getDeclaredConstructors();
++		constructors = ( Constructor<T>[] ) aClass.getDeclaredConstructors();
+ 		for (int i = 0; i < constructors.length; i++ )
+ 		{
+ 			types = constructors[i].getParameterTypes();

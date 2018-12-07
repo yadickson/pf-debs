@@ -1,0 +1,11 @@
+--- a/src/org/pf/settings/impl/GenericNamedObject.java
++++ b/src/org/pf/settings/impl/GenericNamedObject.java
+@@ -14,7 +14,7 @@
+ // ===========================================================================
+ 
+ /**
+- *´Generic implementation for named objects
++ * Generic implementation for named objects
+  *
+  * @author Manfred Duchrow
+  * @version 1.0
