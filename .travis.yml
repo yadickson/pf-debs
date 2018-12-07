@@ -3,6 +3,7 @@ language: generic
 branches:
   only:
   - wheezy
+  -/^v\d+.*$/
 services:
 - docker
 env:

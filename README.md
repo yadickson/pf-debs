@@ -38,6 +38,8 @@ $ fakeroot debian/rules clean binary
 
 **Repositories**
 
+[Debian repository](https://bintray.com/yadickson/debian)
+
 ```
 $ echo "deb [trusted=true] https://dl.bintray.com/yadickson/debian [distribution] main" | sudo tee -a /etc/apt/sources.list.d/bintray.list
 $ sudo apt-get update
@@ -45,9 +47,11 @@ $ sudo apt-get upgrade -y
 $ sudo apt-get install libpf-java
 ```
 
-[Release page](https://github.com/yadickson/pf-debs/releases)
+## License
 
-[Debian Repository](https://bintray.com/yadickson/debian)
+GPL-3.0 © [Yadickson Soto](https://github.com/yadickson)
+
+EPL-1.0 © [programmers-friend](http://www.programmers-friend.org/)
 
 [travis-image]: https://api.travis-ci.org/yadickson/pf-debs.svg?branch=wheezy
 [travis-url]: https://travis-ci.org/yadickson/pf-debs
