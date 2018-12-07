@@ -1,14 +1,5 @@
 sudo: required
 language: generic
-addons:
-  apt:
-    packages:
-    - dpkg-dev
-    - fakeroot
-    - unzip
-    - wget
-    - libc-bin
-    - dos2unix
 services:
 - docker
 env:
@@ -18,9 +9,10 @@ env:
   - PACKAGE_LICENSE=EPL
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
-  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${TRAVIS_BRANCH} --git-debian-branch=${TRAVIS_BRANCH}"
-before_script:
-- sh debian/get-orig-source.sh ${PACKAGE_NAME} ${PACKAGE_VERSION}
+  - PACKAGE_DISTRIBUTION=$(dpkg-parsechangelog | awk '/^Distribution:/ { print $2 }')
+  - TRAVIS_DEBIAN_DERIVATIVE=debian
+  - TRAVIS_DEBIAN_DISTRIBUTION=${PACKAGE_DISTRIBUTION}
+  - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${PACKAGE_DISTRIBUTION} --git-debian-branch=${PACKAGE_DISTRIBUTION}"
 script:
 - wget -O- http://travis.debian.net/script.sh | sh -
 before_deploy:
@@ -29,7 +21,7 @@ before_deploy:
   - sed -i "s/__SUBJECT__/${BINTRAY_USER}/g" .travis.bintray.json
   - sed -i "s/__LICENSE__/${PACKAGE_LICENSE}/g" .travis.bintray.json
   - sed -i "s/__VERSION__/${PACKAGE_VERSION}/g" .travis.bintray.json
-  - sed -i "s/__DISTRIBUTION__/${TRAVIS_BRANCH}/g" .travis.bintray.json
+  - sed -i "s/__DISTRIBUTION__/${PACKAGE_DISTRIBUTION}/g" .travis.bintray.json
 deploy:
   provider: bintray
   file: .travis.bintray.json
