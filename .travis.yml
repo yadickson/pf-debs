@@ -6,10 +6,11 @@ env:
   global:
   - BINTRAY_REPO_NAME=debian
   - BINTRAY_USER=yadickson
-  - PACKAGE_LICENSE=EPL
+  - PACKAGE_LICENSE=EPL-1.0
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
   - PACKAGE_DISTRIBUTION=$(dpkg-parsechangelog | awk '/^Distribution:/ { print $2 }')
+  - PACKAGE_RELEASE=$(date '+%Y-%m-%d')
   - TRAVIS_DEBIAN_DERIVATIVE=debian
   - TRAVIS_DEBIAN_DISTRIBUTION=${PACKAGE_DISTRIBUTION}
   - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${PACKAGE_DISTRIBUTION} --git-debian-branch=${PACKAGE_DISTRIBUTION}"
@@ -22,6 +23,8 @@ before_deploy:
   - sed -i "s/__LICENSE__/${PACKAGE_LICENSE}/g" .travis.bintray.json
   - sed -i "s/__VERSION__/${PACKAGE_VERSION}/g" .travis.bintray.json
   - sed -i "s/__DISTRIBUTION__/${PACKAGE_DISTRIBUTION}/g" .travis.bintray.json
+  - sed -i "s/__RELEASE__/${PACKAGE_RELEASE}/g" .travis.bintray.json
+  - cat .travis.bintray.json
 deploy:
   provider: bintray
   file: .travis.bintray.json

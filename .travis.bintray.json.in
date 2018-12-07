@@ -2,22 +2,31 @@
     "package": {
         "name": "__NAME__",
         "repo": "__REPO_NAME__",
-        "subject": "__SUBJECT__"
+        "subject": "__SUBJECT__",
+        "desc": "I was pushed completely automatically",
+        "website_url": "https://github.com/yadickson",
+        "issue_tracker_url": "https://github.com/yadickson/__NAME__-debs/issues",
+        "vcs_url": "https://github.com/yadickson/__NAME__-debs.git",
+        "github_use_tag_release_notes": true,
+        "github_release_notes_file": "RELEASE.txt",
+        "licenses": ["__LICENSE__", "GPL-3.0"],
+        "labels": ["__NAME__", "__REPO_NAME__", "__DISTRIBUTION__"],
+        "public_download_numbers": false,
+        "public_stats": false
     },
     
     "version": {
         "name": "__VERSION__",
-        "desc": "__NAME__ __VERSION__ by __SUBJECT__"
+        "desc": "__NAME__ __VERSION__ by __SUBJECT__",
+        "released": "__RELEASE__",
+        "vcs_tag": "__VERSION__",
+        "gpgSign": false
     },
-
-    "licenses": ["__LICENSE__"],
-
-    "desc": "Debian package built and deployed completely automatically",
 
     "files": [
         {
-            "includePattern": "./(.[^/]*(\\.deb)$)",
-            "uploadPattern": "$1",
+            "includePattern": "/build/(.[^/]*(\\.deb)$)",
+            "uploadPattern": "/$1",
             "matrixParams": {
                 "deb_distribution": "__DISTRIBUTION__",
                 "deb_component": "main",
