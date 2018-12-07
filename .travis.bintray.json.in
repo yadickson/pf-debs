@@ -25,7 +25,7 @@
 
     "files": [
         {
-            "includePattern": "/build/(.[^/]*(\\.deb)$)",
+            "includePattern": "../(.[^/]*(\\.deb)$)",
             "uploadPattern": "/$1",
             "matrixParams": {
                 "deb_distribution": "__DISTRIBUTION__",
