@@ -20,7 +20,7 @@
         "desc": "__NAME__ __VERSION__ by __SUBJECT__",
         "released": "__RELEASE__",
         "vcs_tag": "__VERSION__",
-        "gpgSign": false
+        "gpgSign": true
     },
 
     "files": [
@@ -37,6 +37,6 @@
 
     "publish": true,
 
-    "override": false
+    "override": true
 }
 
