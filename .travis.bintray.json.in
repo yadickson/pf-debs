@@ -2,22 +2,26 @@
     "package": {
         "name": "__NAME__",
         "repo": "__REPO_NAME__",
-        "subject": "__SUBJECT__"
+        "subject": "__SUBJECT__",
+        "desc": "I was pushed completely automatically",
+        "website_url": "https://github.com/yadickson",
+        "licenses": ["__LICENSE__", "GPL-3.0"],
+        "labels": ["debian", "__DISTRIBUTION__"],
+        "public_download_numbers": false,
+        "public_stats": false
     },
     
     "version": {
         "name": "__VERSION__",
-        "desc": "__NAME__ __VERSION__ by __SUBJECT__"
+        "desc": "__NAME__ __VERSION__ by __SUBJECT__",
+        "released": "__RELEASE__",
+        "gpgSign": false
     },
-
-    "licenses": ["__LICENSE__", "GPL-3.0"],
-
-    "desc": "Debian package built and deployed completely automatically",
 
     "files": [
         {
             "includePattern": "./(.[^/]*(\\.deb)$)",
-            "uploadPattern": "$1",
+            "uploadPattern": "/$1",
             "matrixParams": {
                 "deb_distribution": "__DISTRIBUTION__",
                 "deb_component": "main",
