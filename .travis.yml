@@ -6,7 +6,7 @@ env:
   global:
   - BINTRAY_REPO_NAME=debian
   - BINTRAY_USER=yadickson
-  - PACKAGE_LICENSE=EPL
+  - PACKAGE_LICENSE=EPL-1.0
   - PACKAGE_NAME=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }')
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
   - PACKAGE_DISTRIBUTION=$(dpkg-parsechangelog | awk '/^Distribution:/ { print $2 }')
