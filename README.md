@@ -36,6 +36,7 @@ $ fakeroot debian/rules clean binary
 
 - Debian wheezy
 - Debian jessie
+- Debian stretch
 
 **Repositories**
 
