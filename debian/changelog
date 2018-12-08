@@ -1,3 +1,9 @@
+pf (5.5.0-5) buster; urgency=medium
+
+  * New release.
+
+ -- Yadickson Soto <yadickson@gmail.com>  Sat, 08 Dec 2018 11:12:17 -0300
+
 pf (5.5.0-4) stretch; urgency=medium
 
   * New release.
