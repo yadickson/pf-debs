@@ -54,6 +54,6 @@ GPL-3.0 © [Yadickson Soto](https://github.com/yadickson)
 
 EPL-1.0 © [programmers-friend](http://www.programmers-friend.org/)
 
-[travis-image]: https://api.travis-ci.org/yadickson/pf-debs.svg?branch=wheezy
+[travis-image]: https://api.travis-ci.org/yadickson/pf-debs.svg?branch=jessie
 [travis-url]: https://travis-ci.org/yadickson/pf-debs
 
