@@ -27,7 +27,7 @@
     "files": [
         {
             "includePattern": "../(.[^/]*(\\.deb)$)",
-            "uploadPattern": "/pool/main/__PREFIX__/__NAME__/$1",
+            "uploadPattern": "/pool/main/__NAME__/$1",
             "matrixParams": {
                 "deb_distribution": "__DISTRIBUTION__",
                 "deb_component": "main",

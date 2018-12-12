@@ -13,7 +13,6 @@ env:
   - PACKAGE_VERSION=$(dpkg-parsechangelog | awk '/^Version:/ { print $2 }' | sed 's/-.*//')
   - PACKAGE_DISTRIBUTION=$(dpkg-parsechangelog | awk '/^Distribution:/ { print $2 }')
   - PACKAGE_RELEASE=$(date '+%Y-%m-%d')
-  - PACKAGE_PREFIX=$(dpkg-parsechangelog | awk '/^Source:/ { print $2 }' | awk '{ if ( $0 ~ /lib[0-9a-z]/ ) print substr($0,1,4); else print substr($0,1,1) }')
   - TRAVIS_DEBIAN_DERIVATIVE=debian
   - TRAVIS_DEBIAN_DISTRIBUTION=${PACKAGE_DISTRIBUTION}
   - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tree=${PACKAGE_DISTRIBUTION} --git-debian-branch=${PACKAGE_DISTRIBUTION}"
@@ -27,7 +26,6 @@ before_deploy:
 - sed -i "s/__VERSION__/${PACKAGE_VERSION}/g" .travis.bintray.json
 - sed -i "s/__DISTRIBUTION__/${PACKAGE_DISTRIBUTION}/g" .travis.bintray.json
 - sed -i "s/__RELEASE__/${PACKAGE_RELEASE}/g" .travis.bintray.json
-- sed -i "s/__PREFIX__/${PACKAGE_PREFIX}/g" .travis.bintray.json
 - git config --local user.name "${GITHUB_NAME}"
 - git config --local user.email "${GITHUB_EMAIL}"
 deploy:
